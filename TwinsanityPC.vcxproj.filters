@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{8571707d-f215-463f-bc95-a6817501e729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\headers">
+      <UniqueIdentifier>{58de573c-10de-47c5-939a-ca8e3007e47c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\FUN">
+      <UniqueIdentifier>{5c4ad0f0-de8a-4d57-bef2-ad981d8c7949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\headers\typedefs">
+      <UniqueIdentifier>{5134ef43-f3a3-437d-909d-12e0267c547e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\headers\functions">
+      <UniqueIdentifier>{b6482b84-1737-4133-aecc-ffd23b9969ce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\fun1.c">
+      <Filter>Source Files\src\FUN</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fun2.c">
+      <Filter>Source Files\src\FUN</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fun3.c">
+      <Filter>Source Files\src\FUN</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fun4.c">
+      <Filter>Source Files\src\FUN</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fun6.c">
+      <Filter>Source Files\src\FUN</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fun5.c">
+      <Filter>Source Files\src\FUN</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fun_outer.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fun_misc.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\fun_inner.h">
+      <Filter>Header Files\headers\functions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fun_misc.h">
+      <Filter>Header Files\headers\functions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fun_outter.h">
+      <Filter>Header Files\headers\functions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tdenums.h">
+      <Filter>Header Files\headers\typedefs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tdstructs.h">
+      <Filter>Header Files\headers\typedefs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tdtypes.h">
+      <Filter>Header Files\headers\typedefs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\main.h">
+      <Filter>Header Files\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\memorymap.h">
+      <Filter>Header Files\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\structs.h">
+      <Filter>Header Files\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\typedefs.h">
+      <Filter>Header Files\headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
