@@ -35092,10 +35092,8 @@ undefined8 * FUN_002c70fc(undefined8 *param_1, undefined8 *param_2, uint param_3
 }
 
 
-
-void * FillMemory(void *memory, byte filler, uint size_)
-
-{
+*/
+void * FillMemory(void *memory, byte filler, uint size_) {
 	bool bVar1;
 	undefined4 fillerRepeatedOver16Bytes;
 	void *mem;
@@ -35103,46 +35101,41 @@ void * FillMemory(void *memory, byte filler, uint size_)
 	undefined4 uVar3;
 
 	mem = memory;
-	if ((0x7 < size_) &&
-		(((uint)memory & 0xf) == 0x0
-			// Check if size is bigger than 8 bytes and the address is a multiple of 16)) {
-			// Fill 32 bytes at a time if size allows
-			uVar2 = (ushort)(((long)(char)filler & 0xffU) << 0x8) | (ushort)((long)(char)filler & 0xffU);
-	fillerRepeatedOver16Bytes = CONCAT22(uVar2, uVar2);
-	_fillerRepeatedOver16Bytes = CONCAT26(uVar2, CONCAT24(uVar2, fillerRepeatedOver16Bytes));
-	bVar1 = size_ < 0x8;
-	if (0x1f < size_) {
-		do {
-			*(undefined4 *)mem = fillerRepeatedOver16Bytes;
-			uVar3 = (undefined4)((ulong)_fillerRepeatedOver16Bytes >> 0x20);
-			((undefined4 *)mem)[0x1] = uVar3;
-			((undefined4 *)mem)[0x2] = fillerRepeatedOver16Bytes;
-			((undefined4 *)mem)[0x3] = uVar3;
-			size_ -= 0x20;
-			((undefined4 *)mem)[0x4] = fillerRepeatedOver16Bytes;
-			((undefined4 *)mem)[0x5] = uVar3;
-			((undefined4 *)mem)[0x6] = fillerRepeatedOver16Bytes;
-			((undefined4 *)mem)[0x7] = uVar3;
-			mem = (undefined4 *)mem + 0x8;
-		} while (0x1f < size_);
+	if ((0x7 < size_) && (((uint)memory & 0xf) == 0x0)) {
+		uVar2 = (ushort)(((long)(char)filler & 0xffU) << 0x8) | (ushort)((long)(char)filler & 0xffU);
+		fillerRepeatedOver16Bytes = CONCAT22(uVar2, uVar2);
+		fillerRepeatedOver16Bytes = CONCAT26(uVar2, CONCAT24(uVar2, fillerRepeatedOver16Bytes));
 		bVar1 = size_ < 0x8;
+		if (0x1f < size_) {
+			do {
+				*(undefined4 *)mem = fillerRepeatedOver16Bytes;
+				uVar3 = (undefined4)((ulong)fillerRepeatedOver16Bytes >> 0x20);
+				((undefined4 *)mem)[0x1] = uVar3;
+				((undefined4 *)mem)[0x2] = fillerRepeatedOver16Bytes;
+				((undefined4 *)mem)[0x3] = uVar3;
+				size_ -= 0x20;
+				((undefined4 *)mem)[0x4] = fillerRepeatedOver16Bytes;
+				((undefined4 *)mem)[0x5] = uVar3;
+				((undefined4 *)mem)[0x6] = fillerRepeatedOver16Bytes;
+				((undefined4 *)mem)[0x7] = uVar3;
+				mem = (undefined4 *)mem + 0x8;
+			} while (0x1f < size_);
+			bVar1 = size_ < 0x8;
+		}
+		while (!bVar1) {
+			*(undefined8 *)mem = fillerRepeatedOver16Bytes;
+			size_ -= 0x8;
+			mem = (void *)((int)mem + 0x8);
+			bVar1 = size_ < 0x8;
+		}
 	}
-	while (!bVar1
-		// Fill 8 bytes at a time if size allows) {
-		*(undefined8 *)mem = _fillerRepeatedOver16Bytes;
-	size_ -= 0x8;
-	mem = (void *)((int)mem + 0x8);
-	bVar1 = size_ < 0x8;
+	while (size_ -= 0x1, size_ != 0xffffffff) {
+		* (byte *)mem = filler;
+		mem = (byte *)mem + 0x1;
+	}
+	return memory;
 }
-  }
-  while (size_ -= 0x1, size_ != 0xffffffff
-	  // Fill byte by byte at last) {
-	  * (byte *)mem = filler;
-  mem = (byte *)mem + 0x1;
-  }
-  return memory;
-}
-
+/*
 
 
 // WARNING: Removing unreachable block (ram,0x002c7368)
@@ -46315,10 +46308,11 @@ undefined8 * FUN_002d53b0(void)
 	FUN_002d0260();
 	FUN_002d54d8();
 	FUN_002d6880();
-	DAT_002ebc50 = 0x0;
-	DAT_002ebc54 = 0x0;
-	puVar1 = (undefined8 *)FillMemory(DAT(0x003d0908), 0x0, 0x200);
 	*/
+	*(byte*)DAT(0x002ebc50) = 0x0;
+	*(byte*)DAT(0x002ebc54) = 0x0;
+	puVar1 = (undefined8 *)FillMemory(DAT(0x003d0908), 0x0, 0x200);
+	
 	return puVar1;
 }
 
