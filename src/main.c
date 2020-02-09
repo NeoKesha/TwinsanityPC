@@ -25,7 +25,8 @@ const int false = 0;
 PublicObjectBuilder *G_ObjectBuilder_;
 MediumSizedBoi_0x15b0 *MediumSizedBoy;
 char **GlobalLanguagesArray;
-
+int semaphore1_ID = -1;
+int semaphore2_ID = -1;
 int main() {
 	bool bVar1;
 	undefined4 in_zero_lo = 0; //INIT
@@ -66,5 +67,7 @@ int main() {
 	EI();
 	exitStatus = ElfMain(GlobalElfLoaded_, (char **)&slesStringPtr);
 	ProgramExit(exitStatus);
+	printf("TWINSANITY EXITED WITH STATUS: %d\n", exitStatus);
+	getchar();
 	return 0;
 }

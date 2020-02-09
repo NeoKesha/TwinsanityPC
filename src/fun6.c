@@ -41698,13 +41698,8 @@ void EndOfHeap(void)
 
 
 
-int CreateSema(SemaParam *semaParam)
-
-{
-	int in_v0_lo = 0; //INIT
-
-	syscall(0x0);
-	return in_v0_lo;
+int CreateSema(SemaParam *semaParam) {
+	return outCreateSema(semaParam);
 }
 
 
@@ -46161,7 +46156,7 @@ bool EnableInterruptions(void)
 }
 
 
-
+*/
 void InitSemaphores(void)
 
 {
@@ -46178,7 +46173,7 @@ void InitSemaphores(void)
 	semaphore2_ID = CreateSema(&SStack48);
 	return;
 }
-
+/*
 
 
 undefined8 FUN_002d5210(undefined4 *param_1, undefined4 *param_2, undefined8 param_3)
@@ -46298,9 +46293,10 @@ undefined8 * FUN_002d53b0(void)
 {
 	
 	undefined8 *puVar1 = (void*)0;
-	/*
+	
 	InitSemaphores();
 	// this_ guy sets some syscall table handlers
+	/*
 	FUN_002d52a0();
 	FUN_002d5658();
 	FUN_002d57d0(0x2);
