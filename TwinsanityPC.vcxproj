@@ -116,6 +116,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\externals.h" />
     <ClInclude Include="src\fun_inner.h" />
     <ClInclude Include="src\fun_misc.h" />
     <ClInclude Include="src\fun_outter.h" />

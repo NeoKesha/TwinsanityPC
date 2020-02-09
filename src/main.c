@@ -16,14 +16,19 @@ unsigned char VU1DATA[VU1DATA_LENGTH];
 unsigned char REGGS[REGGS_LENGTH];
 unsigned char SCRATCHPAD[SCRATCHPAD_LENGTH];
 
-const unsigned char* scratchpad_top = SCRATCHPAD + SCRATCHPAD_LENGTH;
+const unsigned char* scratchpad_top = SCRATCHPAD;
 const unsigned char* slesStringPtr = TEXT + 0x0;
+volatile unsigned int REG_RCNT3_MODE = 0;
+volatile unsigned int Status = 0;
 
 uint GlobalElfLoaded_ = 0;
-const int true = 1;
-const int false = 0;
+GameArchivesReader * GlobalArchivesReader_ = (GameArchivesReader *)0x0;
 PublicObjectBuilder *G_ObjectBuilder_;
 MediumSizedBoi_0x15b0 *MediumSizedBoy;
+
+const int true = 1;
+const int false = 0;
+
 char **GlobalLanguagesArray;
 int semaphore1_ID = -1;
 int semaphore2_ID = -1;
@@ -51,7 +56,7 @@ int main() {
 	// void* InitMainThread(uint32 gp, void* stack, int stack_size, char* args, int
 	// root)
 	syscall(0x0);
-	stackPtr = &scratchpad_top;
+	stackPtr = scratchpad_top;
 	// Init scratchpad memory with some garbage
 	stackSize = 0x4000;
 	do {
@@ -62,9 +67,11 @@ int main() {
 	// void* InitHeap(void* heap, int heap_size)
 	syscall(0x0);
 	// Some threading initialization and what not
-	FUN_002d53b0();
+	//FUN_002d53b0();
+	printf("[INFO]Skipping threading initialization\n");
 	FlushCache(0x0);
 	EI();
+	printf("[INFO]ELF IS NOT LOADED!!!\n");
 	exitStatus = ElfMain(GlobalElfLoaded_, (char **)&slesStringPtr);
 	ProgramExit(exitStatus);
 	printf("TWINSANITY EXITED WITH STATUS: %d\n", exitStatus);

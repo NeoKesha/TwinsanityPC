@@ -23171,7 +23171,7 @@ ItemHeader * SetNextItem(ItemHeader *item, ItemHeader *nextItem, int size)
 }
 
 
-
+*/
 astruct_24 * FUN_002b6ab8(astruct_24 *param_1)
 
 {
@@ -23181,12 +23181,7 @@ astruct_24 * FUN_002b6ab8(astruct_24 *param_1)
 }
 
 
-
-// WARNING: Removing unreachable block (ram,0x002b6b1c)
-
-void FUN_002b6ae0(astruct_24 *param_1, ulong param_2)
-
-{
+void FUN_002b6ae0(astruct_24 *param_1, ulong param_2) {
 	param_1->methods = (undefined *)0x307018;
 	FUN_002b6b38(param_1);
 	param_1->methods = (undefined *)0x307148;
@@ -23204,7 +23199,7 @@ void FUN_002b6b38(astruct_24 *param_1)
 	param_1->unkInt = -0x1;
 	return;
 }
-
+/*
 
 
 undefined * FUN_002b6b78(int param_1, uint param_2, long param_3)
@@ -35396,204 +35391,26 @@ char * CopyString(char *param_1, char *param_2)
 	return param_1;
 }
 
-
-
-// WARNING: Removing unreachable block (ram,0x002c76f0)
-// WARNING: Removing unreachable block (ram,0x002c7728)
-// WARNING: Removing unreachable block (ram,0x002c7748)
-// WARNING: Removing unreachable block (ram,0x002c7764)
-// WARNING: Removing unreachable block (ram,0x002c775c)
-// WARNING: Removing unreachable block (ram,0x002c7720)
 // An absolutely GalaxyBrain way to use 128-bit PS2 operations to find string length
-
-uint GetStringLength(char *param_1)
-
-{
-	undefined in_register_00000044[0xc];
-	undefined auVar1[0x10];
-	char *pcVar2;
-
-	auVar1 = CONCAT88(SUB128(in_register_00000044 >> 0x20, 0x0), (long)(int)param_1);
-	// Check if address is word aligned
-	if ((long)(int)param_1 == 0x0) {
-		// Check if address is double word aligned
-		// WARNING: Load size is inaccurate
-		// Read the 128-bits of data(text)
-		auVar1 = *(undefined *)param_1;
-		// Copy data to a variable in reverse bit order (low->high) (high->low)
-		// Lower all the character data by 1 byte and store the result
-		// Load high order bits from low order of the result and low order bits into
-		// high order from 0x80(16)
-		// Truncate high 64-bits from the results and bitwise OR them together
-		// Reverse all the bits from the loaded data
-		// Do bitwise AND between the result and the loaded data and store the result
-		// Do betwise AND between the 0x80(16 of them) and the result and store the
-		// result
-		// Check if the result is equal to 0
-		if ((~SUB168(auVar1, 0x0) &
-			CONCAT17(SUB161(auVar1 >> 0x38, 0x0) + -0x1,
-				CONCAT16(SUB161(auVar1 >> 0x30, 0x0) + -0x1,
-					CONCAT15(SUB161(auVar1 >> 0x28, 0x0) + -0x1,
-						CONCAT14(SUB161(auVar1 >> 0x20, 0x0) + -0x1,
-							CONCAT13(SUB161(auVar1 >> 0x18, 0x0) + -0x1,
-								CONCAT12(SUB161(auVar1 >> 0x10, 0x0) + -0x1,
-									CONCAT11(SUB161(auVar1 >> 0x8, 0x0) +
-										-0x1, SUB161(auVar1, 0x0) +
-										-0x1))))))) &
-			0x8080808080808080) == 0x0) {
-			// If the result was 0 move to next 128 bits
-			pcVar2 = param_1 + 0x10;
-			while (true) {
-				// WARNING: Load size is inaccurate
-				// Load the 128-bits data
-				auVar1 = *(undefined *)pcVar2;
-				// Reverse all the data characters bits
-				// Subtract 1 from each byte of 128-bit data and store the result
-				// Bitwise AND the result and the reversed bits of OG data and store the result
-				// BItwise AND the result and the 0x01(16) data
-				// Copy the high bits from the results into lower bits, the lower ones from the
-				// very previous result into higher ones
-				// Truncate high bits and bitwise OR with the previous result of the iteration
-				// Exit if the result is non zero, else load next 128-bits and do another
-				// iteration
-				if ((~auVar1 & CONCAT115(SUB161(auVar1 >> 0x78, 0x0) + -0x1,
-					CONCAT114(SUB161(auVar1 >> 0x70, 0x0) + -0x1,
-						CONCAT113(SUB161(auVar1 >> 0x68, 0x0) + -0x1,
-							CONCAT112(SUB161(auVar1 >> 0x60, 0x0) + -0x1,
-								CONCAT111(SUB161(auVar1 >> 0x58, 0x0)
-									+ -0x1, CONCAT110(SUB161(
-										auVar1 >> 0x50, 0x0) + -0x1,
-										CONCAT19(SUB161(auVar1 >> 0x48, 0x0) + -0x1,
-											CONCAT18(SUB161(auVar1 >> 0x40, 0x0) +
-												-0x1, CONCAT17(SUB161(auVar1 >>
-													0x38, 0x0) + -0x1,
-													CONCAT16(SUB161(auVar1 >> 0x30, 0x0) + -0x1,
-														CONCAT15(SUB161(auVar1 >> 0x28, 0x0) +
-															-0x1, CONCAT14(SUB161(auVar1 >>
-																0x20, 0x0) + -0x1,
-																CONCAT13(SUB161(auVar1 >> 0x18, 0x0) + -0x1,
-																	CONCAT12(SUB161(auVar1 >> 0x10, 0x0) +
-																		-0x1, CONCAT11(SUB161(auVar1 >>
-																			0x8, 0x0) + -0x1, SUB161(auVar1, 0x0) + -0x1)))))))))
-									)))))) & (undefined[0x10])0x8080808080808080) !=
-									(undefined[0x10])0x0) break;
-				pcVar2 = pcVar2 + 0x10;
-			}
-			auVar1 = ZEXT816((ulong)(long)(int)pcVar2);
-		}
-		else {
-			auVar1 = ZEXT816(0x8080) << 0x40;
-		}
+*/
+uint GetStringLength(char *str) {
+	char *pcVar2 = str;
+	while (*pcVar2 != '\0') {
+		++pcVar2;
 	}
-	while (pcVar2 = SUB164(auVar1, 0x0), *pcVar2 != '\0'
-		// Load the byte from where we stopped at
-		// Keep loading until zero is reached) {
-		auVar1 = CONCAT88(SUB168(auVar1 >> 0x40, 0x0), (long)(int)(pcVar2 + 0x1));
-}
-return (uint)(pcVar2 + -(int)param_1);
+	return (uint)(pcVar2 - (int)str);
 }
 
 
-
-char * StringCopy(char *param_1, char *param_2, uint param_3)
-
-{
-	char cVar1;
-	uint uVar2;
-	uint uVar3;
-	undefined in_v1_qw[0x10];
-	undefined auVar4[0x10];
-	char *str1_Ptr;
-	uint uVar5;
-
-	uVar5 = 0x8;
-	uVar3 = ((uint)param_2 | (uint)param_1) & 0xf;
-	str1_Ptr = param_1;
-	if (((uint)param_2 | (uint)param_1) != 0x0) goto LAB_002c7900;
-	if (uVar3 == 0x0) {
-		uVar5 = 0x10;
+char * StringCopy(char *dst, char *src, uint len) {
+	char *start = dst;
+	for (uint i = 0; i < len; ++i) {
+		*(dst+i) = *(src+i);
 	}
-	if (uVar3 == 0x0) {
-		if ((param_3 < uVar5) ||
-			(auVar4 = ~*(undefined *)param_2,
-			(SUB168(auVar4, 0x0) &
-				CONCAT17(SUB161(auVar4 >> 0x38, 0x0) + -0x1,
-					CONCAT16(SUB161(auVar4 >> 0x30, 0x0) + -0x1,
-						CONCAT15(SUB161(auVar4 >> 0x28, 0x0) + -0x1,
-							CONCAT14(SUB161(auVar4 >> 0x20, 0x0) + -0x1,
-								CONCAT13(SUB161(auVar4 >> 0x18, 0x0) + -0x1,
-									CONCAT12(SUB161(auVar4 >> 0x10, 0x0) + -0x1,
-										CONCAT11(SUB161(auVar4 >> 0x8, 0x0) +
-											-0x1, SUB161(auVar4, 0x0) +
-											-0x1))))))) &
-				0x8080808080808080) != 0x0
-				// WARNING: Load size is inaccurate)) goto LAB_002c7900;
-				// WARNING: Load size is inaccurate
-				auVar4 = *(undefined *)param_2;
-		param_3 -= 0x10;
-		param_2 = param_2 + 0x10;
-		*(int *)param_1 = SUB164(auVar4, 0x0);
-		*(int *)(param_1 + 0x4) = SUB164(auVar4 >> 0x20, 0x0);
-		*(int *)(param_1 + 0x8) = SUB164(auVar4 >> 0x40, 0x0);
-		*(int *)(param_1 + 0xc) = SUB164(auVar4 >> 0x60, 0x0);
-		str1_Ptr = param_1 + 0x10;
-		if ((param_3 < 0x10) ||
-			(auVar4 = *(undefined *)param_2,
-			(~SUB168(auVar4, 0x0) &
-				CONCAT17(SUB161(auVar4 >> 0x38, 0x0) + -0x1,
-					CONCAT16(SUB161(auVar4 >> 0x30, 0x0) + -0x1,
-						CONCAT15(SUB161(auVar4 >> 0x28, 0x0) + -0x1,
-							CONCAT14(SUB161(auVar4 >> 0x20, 0x0) + -0x1,
-								CONCAT13(SUB161(auVar4 >> 0x18, 0x0) + -0x1,
-									CONCAT12(SUB161(auVar4 >> 0x10, 0x0) + -0x1,
-										CONCAT11(SUB161(auVar4 >> 0x8, 0x0) +
-											-0x1, SUB161(auVar4, 0x0) +
-											-0x1))))))) &
-				0x8080808080808080) != 0x0
-				// WARNING: Load size is inaccurate
-				// WARNING: Load size is inaccurate)) goto LAB_002c7900;
-				auVar4 = *(undefined *)param_2;
-	}
-	else {
-		if ((param_3 < uVar5) ||
-			((*(ulong *)param_2 + 0xfefefefefefefeff & ~*(ulong *)param_2 & 0x8080808080808080) != 0x0))
-			goto LAB_002c7900;
-		auVar4 = CONCAT88(SUB168(in_v1_qw >> 0x40, 0x0), *(undefined8 *)param_2);
-	}
-	while (true) {
-		param_3 -= 0x8;
-		param_2 = (char *)((ulong *)param_2 + 0x1);
-		*(long *)str1_Ptr = SUB168(auVar4, 0x0);
-		str1_Ptr = str1_Ptr + 0x8;
-		if ((param_3 < 0x8) ||
-			((*(ulong *)param_2 + 0xfefefefefefefeff & ~*(ulong *)param_2 & 0x8080808080808080) != 0x0))
-			break;
-		auVar4 = CONCAT88(SUB168(auVar4 >> 0x40, 0x0), *(ulong *)param_2);
-	}
-LAB_002c7900:
-	do {
-		uVar5 = param_3;
-		if (uVar5 == 0x0) {
-			return param_1;
-		}
-		cVar1 = *param_2;
-		param_2 = (char *)((int)param_2 + 0x1);
-		*str1_Ptr = cVar1;
-		str1_Ptr = str1_Ptr + 0x1;
-		param_3 = uVar5 - 0x1;
-	} while (cVar1 != '\0');
-	uVar3 = uVar5 - 0x2;
-	uVar5 = uVar5 - 0x1;
-	while (uVar2 = uVar3, uVar5 != 0x0) {
-		*str1_Ptr = '\0';
-		str1_Ptr = str1_Ptr + 0x1;
-		uVar3 = uVar2 - 0x1;
-		uVar5 = uVar2;
-	}
-	return param_1;
+	return dst;
 }
 
-
+/*
 
 undefined *
 FUN_002c7958(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4,
@@ -41875,11 +41692,9 @@ void sceSifSetReg(void)
 
 
 
-void sceSifGetReg(void)
-
-{
-	syscall(0x0);
-	return;
+char sceSifGetReg(void) {
+	printf("[INFO]Mocked function char sceSifGetReg(void) called\n");
+	return '\0';
 }
 
 
@@ -44064,52 +43879,53 @@ void FUN_002d2450(uint param_1, long param_2)
 }
 
 
-
-char FUN_002d2500(void)
-
-{
+*/
+char FUN_002d2500(void) {
 	bool bVar1;
 	char cVar2;
-	undefined uVar3;
+	unsigned char uVar3;
 	int iVar4;
 
 	DisableInterruptions();
-	if (DAT_002eabf4 != 0x0) {
+	if (*(byte*)DAT(0x002eabf4) != 0x0) {
 		bVar1 = EnableInterruptions();
 		return bVar1;
 	}
-	DAT_002eabf4 = 0x1;
+	*(byte*)DAT(0x002eabf4) = 0x1;
 	EnableInterruptions();
-	FUN_002d1dd0();
+	//FUN_002d1dd0();
 	DisableInterruptions();
-	DAT_003cc820 = 0x20;
-	DAT_003cc800 = 0x1;
-	DAT_003cc814 = 0x203cb800;
-	DAT_003cc804 = 0x203cb000;
-	DAT_003cc81c = 0x203cc000;
-	DAT_003cc808 = 0x20;
-	DAT_003cc80c = 0x0;
-	DAT_003cc810 = 0x0;
-	DAT_003cc818 = 0x20;
-	DAT_003cc824 = 0x0;
+	*(byte*)DAT(0x003cc820) = 0x20;
+	*(byte*)DAT(0x003cc800) = 0x1;
+	*(uint*)DAT(0x003cc814) = 0x203cb800;
+	*(uint*)DAT(0x003cc804) = 0x203cb000;
+	*(uint*)DAT(0x003cc81c) = 0x203cc000;
+	*(byte*)DAT(0x003cc808) = 0x20;
+	*(byte*)DAT(0x003cc80c) = 0x0;
+	*(byte*)DAT(0x003cc810) = 0x0;
+	*(byte*)DAT(0x003cc818) = 0x20;
+	*(byte*)DAT(0x003cc824) = 0x0;
+	/*
 	FUN_002d2088(0x80000008, FUN_002d2800, DAT(0x003cc800));
 	FUN_002d2088(0x80000009, FUN_002d2a78, DAT(0x003cc800));
 	FUN_002d2088(0x8000000a, &LAB_002d2c98, DAT(0x003cc800));
 	FUN_002d2088(0x8000000c, FUN_002d2910, DAT(0x003cc800));
+	*/
+	printf("[INFO]In function char FUN_002d2500(void) some calls skipped\n");
 	EnableInterruptions();
 	cVar2 = sceSifGetReg();
 	if (cVar2 == '\0') {
-		DAT_003cb04c = 0x1;
-		FUN_002d2288(0x80000002, (uint *)DAT(0x003cb040), 0x10, (uint *)0x0, 0x0, 0x0);
+		*(byte*)DAT(0x003cb04c) = 0x1;
+		//FUN_002d2288(0x80000002, (uint *)DAT(0x003cb040), 0x10, (uint *)0x0, 0x0, 0x0);
 		do {
-			iVar4 = FUN_002d1da8(0x0);
+			iVar4 = 1;// FUN_002d1da8(0x0);
 		} while (iVar4 == 0x0);
-		uVar3 = sceSifSetReg();
+		uVar3 = 0;//sceSifSetReg();
 		return uVar3;
 	}
 	return cVar2;
 }
-
+/*
 
 
 void FUN_002d26a0(void)
@@ -45333,16 +45149,14 @@ FUN_002d3d00(char *param_1, uint param_2, int param_3, int param_4, int param_5,
 
 
 // WARNING: Globals starting with '_' overlap smaller symbols at the same address
-
-undefined * FUN_002d3f90(ulong param_1)
-
-{
+*/
+undefined * FUN_002d3f90(ulong param_1) {
 	undefined4 *puVar1;
 	int sema_id;
 	int iVar2;
 	SemaParam SStack144;
 	undefined *local_70[0x4];
-
+	/*
 	puVar1 = (undefined4 *)FUN_002d3528(param_1);
 	FUN_002d39a8();
 	if (((DAT_002eac7c == 0x0) || (puVar1 == (undefined4 *)0x0)) || (puVar1[0x1] == 0x0)) {
@@ -45383,10 +45197,11 @@ undefined * FUN_002d3f90(ulong param_1)
 			}
 		}
 	}
+	*/
 	return local_70[0];
 }
 
-
+/*
 
 // WARNING: Globals starting with '_' overlap smaller symbols at the same address
 
@@ -46123,10 +45938,8 @@ FUN_002d5030(long param_1, undefined8 param_2, undefined8 param_3, undefined8 pa
 }
 
 
-
-bool DisableInterruptions(void)
-
-{
+*/
+bool DisableInterruptions(void) {
 	// Check for Interruption enabled bit in the Status regiter of Coprocessor 0
 	// 
 	if ((Status & 0x10000) != 0x0) {
@@ -46148,15 +45961,12 @@ bool DisableInterruptions(void)
 
 
 
-bool EnableInterruptions(void)
-
-{
+bool EnableInterruptions(void) {
 	EI();
 	return (Status & 0x10000) != 0x0;
 }
 
 
-*/
 void InitSemaphores(void)
 
 {
@@ -46198,7 +46008,7 @@ undefined8 FUN_002d5210(undefined4 *param_1, undefined4 *param_2, undefined8 par
 }
 
 
-
+*/
 int * FUN_002d5248(int *param_1, int *param_2, int param_3)
 
 {
@@ -46231,16 +46041,9 @@ int * FUN_002d5248(int *param_1, int *param_2, int param_3)
 
 
 
-int * Call_FUN_002D5248(int *param_1, int *param_2, int param_3)
-
-{
-	int *in_v0_lo;
-
-	syscall(0x0);
-	return in_v0_lo;
+int * Call_FUN_002D5248(int *param_1, int *param_2, int param_3) {
+	return FUN_002d5248(param_1, param_2, param_3);
 }
-
-
 
 void FUN_002d52a0(void)
 
@@ -46252,42 +46055,44 @@ void FUN_002d52a0(void)
 	int *piVar5;
 
 	// Set syscall handler 0x83 to use function 0x2D5248
-	RFU116(syscallTableIndex_0x83, (int)PTR_FUN_002eacac);
+	//TODO: RFU116(syscallTableIndex_0x83, (int)PTR_FUN_002eacac);
+	RFU116(0x83, 0x2D5248);
 	// Set syscall handler 0x5A to use function 0x2D5210
-	RFU116(syscallTableIndex_0x5A, (int)PTR_FUN_002eacb4);
-	piVar2 = Call_FUN_002D5248((int *)0x80000000, (int *)0x80080000, (int)FUN_002d5248);
-	piVar3 = Call_FUN_002D5248((int *)0x80000000, (int *)0x80080000, (int)FUN_002d5210);
+	//TODO: RFU116(syscallTableIndex_0x5A, (int)PTR_FUN_002eacb4);
+	RFU116(0x5A, 0x2D5210);
+	/* TODO:
+	piVar2 = 0;//Call_FUN_002D5248((int *)0x80000000, (int *)0x80080000, (int)FUN_002d5248);
+	piVar3 = 0;// Call_FUN_002D5248((int *)0x80000000, (int *)0x80080000, (int)FUN_002d5210);
 	piVar5 = piVar2 + -0x83;
 	piVar4 = piVar3 + -0x5a;
 	if (piVar5 != piVar4) {
 		bVar1 = piVar5 < piVar4;
 		do {
 			if (bVar1) {
-				piVar2 = Call_FUN_002D5248(piVar2 + 0x1, (int *)0x80080000, (int)FUN_002d5248);
+				piVar2 = 0;//Call_FUN_002D5248(piVar2 + 0x1, (int *)0x80080000, (int)FUN_002d5248);
 				piVar5 = piVar2 + -0x83;
 			}
 			else {
-				piVar3 = Call_FUN_002D5248(piVar3 + 0x1, (int *)0x80080000, (int)FUN_002d5210);
+				piVar3 = 0;//Call_FUN_002D5248(piVar3 + 0x1, (int *)0x80080000, (int)FUN_002d5210);
 				piVar4 = piVar3 + -0x5a;
 			}
 			bVar1 = piVar5 < piVar4;
 		} while (piVar5 != piVar4);
 	}
-	DAT_002eaca0 = piVar5;
+	*(int*)DAT(0x002eaca0) = piVar5;
+	*/
 	return;
 }
 
 
-
-void RFU116(int index, int address)
-
-{
+void RFU116(int index, int address) {
+	printf("[TODO]Replace all syscall(%x) on FUN_%.8x\n");
+	printf("!! RFU116 is mocked !!\n");
 	syscall(0x0);
 	return;
 }
 
 
-*/
 undefined8 * FUN_002d53b0(void)
 
 {
@@ -46296,9 +46101,10 @@ undefined8 * FUN_002d53b0(void)
 	
 	InitSemaphores();
 	// this_ guy sets some syscall table handlers
-	/*
+	
 	FUN_002d52a0();
 	FUN_002d5658();
+	/*
 	FUN_002d57d0(0x2);
 	FUN_002d5930();
 	FUN_002d0260();
@@ -46414,14 +46220,14 @@ void RFU116(int index, int address)
 }
 
 
-
+*/
 void FUN_002d5600(void)
 
 {
 	syscall(0x0);
 	return;
 }
-
+/*
 
 
 undefined8 FUN_002d5610(undefined4 *param_1, undefined4 *param_2, undefined8 param_3)
@@ -46446,10 +46252,8 @@ undefined8 FUN_002d5610(undefined4 *param_1, undefined4 *param_2, undefined8 par
 }
 
 
-
-void DoSyscall_Handler_5B(void)
-
-{
+*/
+void DoSyscall_Handler_5B(void) {
 	syscall(0x0);
 	return;
 }
@@ -46464,19 +46268,21 @@ void FUN_002d5658(void)
 	int *piVar1;
 	uint uVar2;
 
-	uVar2 = read_volatile_4(REG_RCNT3_MODE);
+	uVar2 = REG_RCNT3_MODE;
 	if ((uVar2 & 0x100) == 0x0) {
 		uVar2 = 0x2;
 		piVar1 = DAT(0x002ebc00);
-		RFU116(syscallTableIndex_5A, (int)PTR_FUN_002ebbf4);
+		//RFU116(syscallTableIndex_5A, (int)PTR_FUN_002ebbf4);
+		RFU116(0x5A, 0x002ebbf4);
 		FUN_002d5600();
 		FUN_002d5600();
 		FlushCache(0x0);
 		FlushCache(0x2);
-		RFU116(syscallTableIndex_5B, DAT_002ebbfc);
+		//RFU116(syscallTableIndex_5B, DAT_002ebbfc);
+		RFU116(0x5B, 0x002ebbfc);
 		do {
 			uVar2 += 0x1;
-			address = DoSyscall_Handler_5B();
+			address = 0x002ebbfc; //TODO: DoSyscall_Handler_5B();
 			index = *piVar1;
 			piVar1 = piVar1 + 0x2;
 			RFU116(index, address);
@@ -46484,7 +46290,7 @@ void FUN_002d5658(void)
 	}
 	return;
 }
-
+/*
 
 
 // WARNING: Globals starting with '_' overlap smaller symbols at the same address
@@ -47427,10 +47233,9 @@ long FUN_002d6998(void)
 }
 
 
-
-void FUN_002d6d20(void)
-
-{
+*/
+void FUN_002d6d20(void) {
+	/*
 	code *pcVar1;
 	code **ppcVar2;
 	int iVar3;
@@ -47453,6 +47258,8 @@ void FUN_002d6d20(void)
 			pcVar1 = *ppcVar2;
 		}
 	}
+	*/
+	printf("[INFO]Mocked function void FUN_002d6d20(void) called\n");
 	return;
 }
 
@@ -47461,13 +47268,13 @@ void FUN_002d6d20(void)
 void FUN_002d6dc8(void)
 
 {
-	if (DAT_003d1d6c == 0x0) {
-		DAT_003d1d6c = 0x1;
+	if (*(byte*)DAT(0x003d1d6c) == 0x0) {
+		*(byte*)DAT(0x003d1d6c) = 0x1;
 		FUN_002d6d20();
 	}
 	return;
 }
-
+/*
 
 
 ulong FUN_002d6df8(long param_1, long param_2)

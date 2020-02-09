@@ -15,6 +15,8 @@ extern const int false;
 extern PublicObjectBuilder *G_ObjectBuilder_;
 extern MediumSizedBoi_0x15b0 *MediumSizedBoy;
 extern char **GlobalLanguagesArray;
+extern GameArchivesReader * GlobalArchivesReader_;
 
 extern int semaphore1_ID;
 extern int semaphore2_ID;
+

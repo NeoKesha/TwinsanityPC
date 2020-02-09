@@ -65,3 +65,6 @@ extern unsigned char SCRATCHPAD[];
 
 extern const unsigned char* scratchpad_top;
 extern const unsigned char* slesStringPtr;
+
+extern volatile unsigned int REG_RCNT3_MODE;
+extern volatile unsigned int Status;

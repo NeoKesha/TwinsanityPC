@@ -818,18 +818,18 @@ void FUN_00101500(GameArchivesReader *this_)
 	return;
 }
 
-
+*/
 
 GameArchivesReader * InitArchivesReader_(uint wordNum, ArchivesData *words)
 
 {
 	char *word;
 	bool bVar1;
-	GameArchivesReader *archivesReader_;
+	GameArchivesReader *archivesReader_ = (GameArchivesReader*)0;
 	char **wordsArray;
 	uint counter;
 	String string;
-
+	/*
 	counter = 0x1;
 	archivesReader_ = (GameArchivesReader *)MemoryAllocate(0xfc);
 	archivesReader_ = FUN_00100228(archivesReader_);
@@ -854,6 +854,8 @@ GameArchivesReader * InitArchivesReader_(uint wordNum, ArchivesData *words)
 			wordsArray = wordsArray + 0x1;
 		} while (counter < wordNum);
 	}
+	*/
+	printf("[INFO]Mocked GameArchivesReader * InitArchivesReader_(uint wordNum, ArchivesData *words)\n");
 	return archivesReader_;
 }
 
@@ -865,7 +867,7 @@ char * GetSysFolder(void)
 	return "CRASH6\\SYS";
 }
 
-
+/*
 
 undefined4 FUN_00101620(int param_1)
 

@@ -31793,10 +31793,11 @@ int ElfMain(uint elfInitialized_, char **slesStringPtr) {
 	char **ios2manString;
 	uint uVar6;
 	String local_50;
-	/*
+	
 	uVar6 = 0x0;
 	FUN_002d6dc8();
 	FUN_002d2500();
+	/*
 	FUN_002c2c58();
 	FUN_002c2c90();
 	FUN_002c2aa8();
@@ -31804,20 +31805,24 @@ int ElfMain(uint elfInitialized_, char **slesStringPtr) {
 	FUN_002c2350();
 	FUN_002c27b8(0x1);
 	FUN_0017d478();
+	*/
+	
 	GameArchivesReader = FUN_0017d840(0x1, slesStringPtr);
 	sysFolder = GetSysFolder();
+	/*
 	ios2manString = &PTR_s_SIO2MAN_IRX_002e71c8;
 	do {
 		CopyToString(&local_50, "cdrom0:\\");
 		uVar6 += 0x1;
 		ConcatenateString(&local_50, sysFolder);
-		ConcatenateString(&local_50, &CHAR___00309aa8);
+		ConcatenateString(&local_50, (char*)DAT(0x00309aa8));
 		str = *ios2manString;
 		ios2manString = ios2manString + 0x1;
 		ConcatenateString(&local_50, str);
 		FUN_002d4e40();
 		StringDelete(&local_50);
 	} while (uVar6 < 0x8);
+	
 	FUN_002c5920();
 	FUN_002c2cc8();
 	FUN_002d48d8();
@@ -31871,7 +31876,7 @@ int ElfMain(uint elfInitialized_, char **slesStringPtr) {
 return 0x0;
 }
 
-/*
+
 
 GameArchivesReader * FUN_0017d840(uint readMode_, char **slesStringPtr)
 
@@ -31893,72 +31898,69 @@ GameArchivesReader * FUN_0017d840(uint readMode_, char **slesStringPtr)
 	astruct_24 someStructWithSomeMethods_;
 	char *strBeg;
 
-	uVar3 = CONCAT44((int)readMode_ >> 0x1f, 0x1);
+	uVar3 = (((int)readMode_ >> 0x1f) << 32) || (0x1); //CONCAT44
 	wordsData = &local_420;
 	if (GlobalArchivesReader_ == (GameArchivesReader *)0x0) {
 		if (uVar3 < 0x2) {
 			FUN_002b6ab8(&someStructWithSomeMethods_);
-			strLength = GetStringLength(PTR_s_rb_batch_Crash6_Crash_00309884);
-			strBeg = PTR_s_rb_batch_Crash6_Crash_00309884;
+			strLength = GetStringLength((char*)DAT(0x00309884));
+			strBeg = (char*)DAT(0x00309884); 
 			wordNum = 0x1;
 			wordFoundFlag = true;
 			counter2 = 0x0;
 			iVar2 = 0x0;
 			if (strLength != 0x0) {
 				wordsArrayPtr = &local_420.RD_String;
-				stringPtr = PTR_s_rb_batch_Crash6_Crash_00309884;
+				stringPtr = (char*)DAT(0x00309884);
 				do {
 					character = *stringPtr;
-					if ((((character == '\n') || (character == '\r')) || (character == '\t')) ||
-						(character == ' '
-							// Looks for anything that breaks a word in a string)) {
-							if (!wordFoundFlag) {
-								*stringPtr = '\0';
+					if ((character == '\n') || (character == '\r') || (character == '\t') || (character == ' ')) {
+						if (!wordFoundFlag) {
+							*stringPtr = '\0';
 								*wordsArrayPtr = strBeg + iVar2;
 								wordNum += 0x1;
 								wordsArrayPtr = wordsArrayPtr + 0x1;
-							}
-					iVar2 = counter2 + 0x1;
-					wordFoundFlag = true;
-				}
-			else {
-				wordFoundFlag = false;
+						}
+						iVar2 = counter2 + 0x1;
+							wordFoundFlag = true;
+					}
+					else {
+						wordFoundFlag = false;
+					}
+					counter2 += 0x1;
+					stringPtr = strBeg + counter2;
+				} while (counter2 < strLength);
 			}
-			counter2 += 0x1;
-			stringPtr = strBeg + counter2;
-			} while (counter2 < strLength);
-		}
-		// If came to string end but word flag isn't set, that means this_ is the last
-		// word, store it
-		if (!wordFoundFlag) {
-			ppcVar1 = (char **)(&local_420.unkInt + wordNum);
-			wordNum += 0x1;
-			*ppcVar1 = strBeg + iVar2;
-		}
-		FUN_002b6ae0(&someStructWithSomeMethods_, 0x2);
-	}
-	else {
-		uVar4 = 0x0;
-		wordNum = 0x0;
-		if (uVar3 != 0x0) {
-			strBeg = *slesStringPtr;
-			while (true) {
-				wordNum = (int)uVar4 + 0x1;
-				uVar4 = SEXT48((int)wordNum);
-				slesStringPtr = slesStringPtr + 0x1;
-				*(char **)wordsData = strBeg;
-				wordsData = (ArchivesData *)((char **)wordsData + 0x1);
-				if ((uVar3 <= uVar4) || (0xff < uVar4)) break;
+			// If came to string end but word flag isn't set, that means this_ is the last
+			// word, store it
+			if (!wordFoundFlag) {
+				ppcVar1 = (char **)(&local_420.unkInt + wordNum);
+				wordNum += 0x1;
+				*ppcVar1 = strBeg + iVar2;
+			}
+			FUN_002b6ae0(&someStructWithSomeMethods_, 0x2);
+		} else {
+			uVar4 = 0x0;
+			wordNum = 0x0;
+			if (uVar3 != 0x0) {
 				strBeg = *slesStringPtr;
+				while (true) {
+					wordNum = (int)uVar4 + 0x1;
+					uVar4 = (int)wordNum;
+					slesStringPtr = slesStringPtr + 0x1;
+					*(char **)wordsData = strBeg;
+					wordsData = (ArchivesData *)((char **)wordsData + 0x1);
+					if ((uVar3 <= uVar4) || (0xff < uVar4)) break;
+					strBeg = *slesStringPtr;
+				}
 			}
 		}
+		GlobalArchivesReader_ = InitArchivesReader_(wordNum, &local_420);
 	}
-	GlobalArchivesReader_ = InitArchivesReader_(wordNum, &local_420);
-}
-return GlobalArchivesReader_;
+	return GlobalArchivesReader_;
 }
 
-
+/*
 
 void FUN_0017d9a8(GameArchivesReader *param_1)
 

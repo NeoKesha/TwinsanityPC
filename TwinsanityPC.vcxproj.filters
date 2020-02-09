@@ -89,5 +89,8 @@
     <ClInclude Include="src\typedefs.h">
       <Filter>Header Files\headers</Filter>
     </ClInclude>
+    <ClInclude Include="src\externals.h">
+      <Filter>Header Files\headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
