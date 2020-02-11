@@ -32,6 +32,71 @@ const int false = 0;
 char **GlobalLanguagesArray;
 int semaphore1_ID = -1;
 int semaphore2_ID = -1;
+
+void loadElf() {
+	FILE *f;
+	FILE *o;
+	fopen_s(&f,"SLES_525.68", "rb");
+	//LOAD TEXT
+	fseek(f, TEXT_FILE, 0);
+	fread_s(TEXT, TEXT_LENGTH, 1, TEXT_LENGTH, f);
+	fopen_s(&o, "TEXT.BIN", "wb");
+	fwrite(TEXT, 1, TEXT_LENGTH, o);
+	fflush(o);
+	fclose(o);
+	//LOAD VUTEXT
+	fseek(f, VUTEXT_FILE, 0);
+	fread_s(VUTEXT, VUTEXT_LENGTH, 1, VUTEXT_LENGTH, f);
+	fopen_s(&o, "VUTEXT.BIN", "wb");
+	fwrite(VUTEXT, 1, VUTEXT_LENGTH, o);
+	fflush(o);
+	fclose(o);
+	//LOAD DATA
+	fseek(f, DATA_FILE, 0);
+	fread_s(DATA, DATA_LENGTH, 1, DATA_LENGTH, f);
+	fopen_s(&o, "DATA.BIN", "wb");
+	fwrite(DATA, 1, DATA_LENGTH, o);
+	fflush(o);
+	fclose(o);
+	//LOAD VUDATA
+	fseek(f, VUDATA_FILE, 0);
+	fread_s(VUDATA, VUDATA_LENGTH, 1, VUDATA_LENGTH, f);
+	fopen_s(&o, "VUDATA.BIN", "wb");
+	fwrite(VUDATA, 1, VUDATA_LENGTH, o);
+	fflush(o);
+	fclose(o);
+	//LOAD RODATA
+	fseek(f, RODATA_FILE, 0);
+	fread_s(RODATA, RODATA_LENGTH, 1, RODATA_LENGTH, f);
+	fopen_s(&o, "RODATA.BIN", "wb");
+	fwrite(RODATA, 1, RODATA_LENGTH, o);
+	fflush(o);
+	fclose(o);
+	//LOAD SDATA
+	fseek(f, SDATA_FILE, 0);
+	fread_s(SDATA, SDATA_LENGTH, 1, SDATA_LENGTH, f);
+	fopen_s(&o, "SDATA.BIN", "wb");
+	fwrite(SDATA, 1, SDATA_LENGTH, o);
+	fflush(o);
+	fclose(o);
+	//LOAD SBSS
+	fseek(f, SBSS_FILE, 0);
+	fread_s(SBSS, SBSS_LENGTH, 1, SBSS_LENGTH, f);
+	fopen_s(&o, "SBSS.BIN", "wb");
+	fwrite(SBSS, 1, SBSS_LENGTH, o);
+	fflush(o);
+	fclose(o);
+	//LOAD BSS
+	fseek(f, BSS_FILE, 0);
+	fread_s(BSS, BSS_LENGTH, 1, BSS_LENGTH, f);
+	fopen_s(&o, "BSS.BIN", "wb");
+	fwrite(BSS, 1, BSS_LENGTH, o);
+	fflush(o);
+	fclose(o);
+	//CLOSE
+	fclose(f);
+}
+
 int main() {
 	bool bVar1;
 	undefined4 in_zero_lo = 0; //INIT
@@ -46,15 +111,13 @@ int main() {
 	// Clear entire RAM
 	ramStart = DAT(0x0030a480);
 	do {
-		*(undefined4 *)ramStart = in_zero_lo;
-		*(undefined4 *)((int)ramStart + 0x4) = in_zero_hi;
-		*(undefined4 *)(ramStart + 0x1) = in_zero_udw;
-		*(undefined4 *)((int)ramStart + 0xc) = in_register_0000000c;
+		*(uint*)ramStart = in_zero_lo;
+		*(uint*)((int)ramStart + 0x4) = in_zero_hi;
+		*(uint*)(ramStart + 0x1) = in_zero_udw;
+		*(uint*)((int)ramStart + 0xc) = in_register_0000000c;
 		bVar1 = ramStart < DAT(0x003db200);
 		ramStart = ramStart + 0x2;
 	} while (bVar1);
-	// void* InitMainThread(uint32 gp, void* stack, int stack_size, char* args, int
-	// root)
 	syscall(0x0);
 	stackPtr = scratchpad_top;
 	// Init scratchpad memory with some garbage
@@ -64,14 +127,13 @@ int main() {
 		stackSize += -0x4;
 		stackPtr = stackPtr + 0x1;
 	} while (0x0 < stackSize);
-	// void* InitHeap(void* heap, int heap_size)
-	syscall(0x0);
+	
 	// Some threading initialization and what not
 	//FUN_002d53b0();
 	printf("[INFO]Skipping threading initialization\n");
 	FlushCache(0x0);
 	EI();
-	printf("[INFO]ELF IS NOT LOADED!!!\n");
+	loadElf();
 	exitStatus = ElfMain(GlobalElfLoaded_, (char **)&slesStringPtr);
 	ProgramExit(exitStatus);
 	printf("TWINSANITY EXITED WITH STATUS: %d\n", exitStatus);
