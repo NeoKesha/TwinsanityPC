@@ -856,7 +856,6 @@ GameArchivesReader * InitArchivesReader_(uint wordNum, ArchivesData *words)
 			wordsArray = wordsArray + 0x1;
 		} while (counter < wordNum);
 	}
-	printf("[INFO]Mocked GameArchivesReader * InitArchivesReader_(uint wordNum, ArchivesData *words)\n");
 	return archivesReader_;
 }
 

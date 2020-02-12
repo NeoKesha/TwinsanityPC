@@ -31903,15 +31903,15 @@ GameArchivesReader * FUN_0017d840(uint readMode_, char **slesStringPtr)
 	if (GlobalArchivesReader_ == (GameArchivesReader *)0x0) {
 		if (uVar3 < 0x2) {
 			FUN_002b6ab8(&someStructWithSomeMethods_);
-			strLength = GetStringLength((char*)DAT(0x00309884));
-			strBeg = (char*)DAT(0x00309884); 
+			strLength = GetStringLength((char*)DAT(RODATA_START));
+			strBeg = (char*)DAT(RODATA_START);
 			wordNum = 0x1;
 			wordFoundFlag = true;
 			counter2 = 0x0;
 			iVar2 = 0x0;
 			if (strLength != 0x0) {
 				wordsArrayPtr = &local_420.RD_String;
-				stringPtr = (char*)DAT(0x00309884);
+				stringPtr = (char*)DAT(RODATA_START);
 				do {
 					character = *stringPtr;
 					if ((character == '\n') || (character == '\r') || (character == '\t') || (character == ' ')) {
@@ -35115,7 +35115,7 @@ bool GetArchivePath(GameArchivesReader *param_1, char *word, char *BATCH, String
 				character = *batchStrPtr;
 				counter += 0x1;
 				newChar = character + -0x20;
-				if (character > 'Z') {
+				if (character >= 'a' && character <= 'z' ) {
 					newChar = character - ('a' - 'A');
 				}
 				else {
@@ -35377,7 +35377,7 @@ ulong FUN_00181c70(void)
 
 */
 void * MemoryAllocate(uint memoryAllocSize) {
-	return malloc((size_t)memoryAllocSize);
+	return calloc((size_t)memoryAllocSize,1);
 }
 
 
@@ -35390,7 +35390,7 @@ void MemoryDeallocate2_(void *address) {
 
 
 void * MemoryAllocate2(ulong memoryAllocSize) {
-	return malloc((size_t)memoryAllocSize);
+	return calloc((size_t)memoryAllocSize,1);
 }
 
 

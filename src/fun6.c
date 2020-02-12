@@ -39694,7 +39694,7 @@ char ToLowerCase(char param_1) {
 	char cVar1;
 
 	cVar1 = param_1 + ' ';
-	if (param_1 < 'a') {
+	if (param_1 >= 'A' && param_1 <= 'Z') {
 		cVar1 = param_1 + ('a' - 'A');
 	}
 	else {

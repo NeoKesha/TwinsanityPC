@@ -35,8 +35,8 @@ char **GlobalLanguagesArray;
 int semaphore1_ID = -1;
 int semaphore2_ID = -1;
 
-extern char* RB_String = (char*)0x0;
-extern char* BATCH_String = (char*)0x0;
+extern char* RB_String = "rb";
+extern char* BATCH_String = "batch";
 
 void loadElf() {
 	FILE *f;
