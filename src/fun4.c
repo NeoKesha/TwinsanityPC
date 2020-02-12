@@ -13825,7 +13825,7 @@ String * FUN_00204498(String *param_1, long param_2)
 	return param_1;
 }
 
-
+*/
 
 String * CopyToString(String *param_1, char *param_2)
 
@@ -13836,7 +13836,7 @@ String * CopyToString(String *param_1, char *param_2)
 	return param_1;
 }
 
-
+/*
 
 uint FUN_002045c0(String *param_1, char *param_2)
 
@@ -13923,10 +13923,8 @@ String * CreateStringFromChar(String *newStr, char *string) {
 }
 
 /*
-
-String * ConcatenateString(String *strObj, char *str)
-
-{
+*/
+String * ConcatenateString(String *strObj, char *str) {
 	char *strPtr;
 	bool bVar1;
 	uint strLen;
@@ -13969,7 +13967,7 @@ String * ConcatenateString(String *strObj, char *str)
 	return strObj;
 }
 
-
+/*
 
 void FUN_002048e0(int *param_1, int param_2)
 
@@ -14095,7 +14093,7 @@ void ForwardToBackSlash(String *param_1)
 	return;
 }
 
-
+*/
 
 void FUN_00204b60(String *param_1, char *param_2)
 
@@ -14129,7 +14127,7 @@ void FUN_00204b60(String *param_1, char *param_2)
 	return;
 }
 
-
+/*
 
 void FUN_00204c00(HeapManager *param_1, undefined4 *param_2, int param_3)
 

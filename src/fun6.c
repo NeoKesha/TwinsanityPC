@@ -35137,51 +35137,17 @@ void * FillMemory(void *memory, byte filler, uint size_) {
 // WARNING: Removing unreachable block (ram,0x002c738c)
 // WARNING: Removing unreachable block (ram,0x002c73a0)
 // WARNING: Removing unreachable block (ram,0x002c73a8)
-
-char * DoConcat(char *param_1, char *param_2)
-
-{
+*/
+char * DoConcat(char *param_1, char *param_2) {
 	undefined auVar1[0x10];
-	char *pcVar2;
-
-	pcVar2 = param_1;
-	if ((param_1 == (char *)0x0) &&
-		((~SUB168(auRam00000000, 0x0) &
-			CONCAT17(SUB161(auRam00000000 >> 0x38, 0x0) + -0x1,
-				CONCAT16(SUB161(auRam00000000 >> 0x30, 0x0) + -0x1,
-					CONCAT15(SUB161(auRam00000000 >> 0x28, 0x0) + -0x1,
-						CONCAT14(SUB161(auRam00000000 >> 0x20, 0x0) + -0x1,
-							CONCAT13(SUB161(auRam00000000 >> 0x18, 0x0) + -0x1,
-								CONCAT12(SUB161(auRam00000000 >> 0x10, 0x0) +
-									-0x1, CONCAT11(SUB161(auRam00000000 >>
-										0x8, 0x0) + -0x1,
-										SUB161(auRam00000000, 0x0)
-										+ -0x1))))))) &
-			0x8080808080808080) == 0x0)) {
-		pcVar2 = DAT(0x00000010);
-		while (auVar1 = *(undefined *)pcVar2,
-			(~SUB168(auVar1, 0x0) &
-				CONCAT17(SUB161(auVar1 >> 0x38, 0x0) + -0x1,
-					CONCAT16(SUB161(auVar1 >> 0x30, 0x0) + -0x1,
-						CONCAT15(SUB161(auVar1 >> 0x28, 0x0) + -0x1,
-							CONCAT14(SUB161(auVar1 >> 0x20, 0x0) + -0x1,
-								CONCAT13(SUB161(auVar1 >> 0x18, 0x0) + -0x1,
-									CONCAT12(SUB161(auVar1 >> 0x10, 0x0) + -0x1,
-										CONCAT11(SUB161(auVar1 >> 0x8, 0x0)
-											+ -0x1, SUB161(auVar1, 0x0)
-											+ -0x1))))))) &
-				0x8080808080808080) == 0x0
-			// WARNING: Load size is inaccurate) {
-			pcVar2 = pcVar2 + 0x10;
+	char *pcVar2 = param_1;
+	while (*pcVar2 != '\0') {
+		pcVar2 = pcVar2 + 0x1;
 	}
+	CopyString(pcVar2, param_2);
+	return param_1;
 }
-while (*pcVar2 != '\0') {
-	pcVar2 = pcVar2 + 0x1;
-}
-CopyString(pcVar2, param_2);
-return param_1;
-}
-
+/*
 
 
 // WARNING: Removing unreachable block (ram,0x002c74ac)
@@ -45504,8 +45470,8 @@ ulong FUN_002d4b78(void)
 	return uVar2;
 }
 
-
-
+*/
+/*
 uint FUN_002d4c18(char *param_1, long param_2, ulong *param_3, undefined4 *param_4, uint param_5)
 
 {
@@ -45696,8 +45662,8 @@ void FUN_002d4e40(void)
 	FUN_002d4c18();
 	return;
 }
-
-
+*/
+/*
 
 // WARNING: Globals starting with '_' overlap smaller symbols at the same address
 

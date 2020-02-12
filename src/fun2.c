@@ -31809,20 +31809,20 @@ int ElfMain(uint elfInitialized_, char **slesStringPtr) {
 	
 	GameArchivesReader = FUN_0017d840(0x1, slesStringPtr);
 	sysFolder = GetSysFolder();
-	/*
-	ios2manString = &PTR_s_SIO2MAN_IRX_002e71c8;
+	
+	ios2manString = (char**)DAT(DATA_START+0x2C8);
 	do {
 		CopyToString(&local_50, "cdrom0:\\");
 		uVar6 += 0x1;
 		ConcatenateString(&local_50, sysFolder);
 		ConcatenateString(&local_50, (char*)DAT(0x00309aa8));
-		str = *ios2manString;
+		str = (char*)DAT(*ios2manString);
 		ios2manString = ios2manString + 0x1;
 		ConcatenateString(&local_50, str);
-		FUN_002d4e40();
+		//TODO: FUN_002d4e40(); //Loads into mem?
 		StringDelete(&local_50);
 	} while (uVar6 < 0x8);
-	
+	/*
 	FUN_002c5920();
 	FUN_002c2cc8();
 	FUN_002d48d8();
