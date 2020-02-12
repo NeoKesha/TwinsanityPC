@@ -25,6 +25,8 @@ uint GlobalElfLoaded_ = 0;
 GameArchivesReader * GlobalArchivesReader_ = (GameArchivesReader *)0x0;
 PublicObjectBuilder *G_ObjectBuilder_;
 MediumSizedBoi_0x15b0 *MediumSizedBoy;
+GameResources * GameResourcesObjectPointer = (GameResources *)0x0;
+ResourceTable * G_ScriptTable = (ResourceTable *)0x0;
 
 const int true = 1;
 const int false = 0;
@@ -32,6 +34,9 @@ const int false = 0;
 char **GlobalLanguagesArray;
 int semaphore1_ID = -1;
 int semaphore2_ID = -1;
+
+extern char* RB_String = (char*)0x0;
+extern char* BATCH_String = (char*)0x0;
 
 void loadElf() {
 	FILE *f;

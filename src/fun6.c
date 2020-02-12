@@ -21316,7 +21316,7 @@ void * FUN_002b4468(PublicObjectBuilder *param_1, int param_2, int unkNegativeIn
 	local_40.methods = DAT(0x00307288);
 	local_40.scriptSupport2 = param_1;
 	while (true) {
-		if (local_40.field_0x8 == (InternalObjectBuilder_ *)0x0) {
+		if (local_40.field_0x8 == (InternalObjectBuilder *)0x0) {
 			return (void *)0x0;
 		}
 		param_1_field_0x0_0x8 =
@@ -22210,7 +22210,7 @@ void FUN_002b5998(ulong param_1, ulong param_2)
 void FUN_002b59c8(AnotherSupportStructForScripts *this_)
 
 {
-	*(InternalObjectBuilder_ **)&this_->field_0x8 = this_->scriptSupport2->lastBuilder;
+	*(InternalObjectBuilder **)&this_->field_0x8 = this_->scriptSupport2->lastBuilder;
 	return;
 }
 
@@ -22240,39 +22240,38 @@ int FUN_002b59f8(AnotherSupportStructForScripts *param_1)
 }
 
 
-
+*/
 void FUN_002b5a08(PublicObjectBuilder *param_1, undefined *buildFunTable)
 
 {
 	int iVar1;
-	InternalObjectBuilder_ *pIVar2;
+	InternalObjectBuilder *pIVar2;
 	int iVar3;
-	InternalObjectBuilder_ *intObjBuilder;
+	InternalObjectBuilder *intObjBuilder;
 
-	intObjBuilder = (InternalObjectBuilder_ *)MemoryAllocate(0xc);
+	intObjBuilder = (InternalObjectBuilder *)MemoryAllocate(0xc);
 	iVar1 = param_1->builderAmount;
-	intObjBuilder->builderFunTable_ = buildFunTable;
-	intObjBuilder->unkBuilder_ = (InternalObjectBuilder_ *)0x0;
-	intObjBuilder->nextBuilder = (InternalObjectBuilder_ *)0x0;
+	intObjBuilder->builderFunTable = buildFunTable;
+	intObjBuilder->unkBuilder = (InternalObjectBuilder *)0x0;
+	intObjBuilder->nextBuilder = (InternalObjectBuilder *)0x0;
 	if (iVar1 == 0x0) {
 		param_1->firstBuilder = intObjBuilder;
 		param_1->lastBuilder = intObjBuilder;
-		intObjBuilder->nextBuilder = (InternalObjectBuilder_ *)0x0;
-	}
-	else {
+		intObjBuilder->nextBuilder = (InternalObjectBuilder *)0x0;
+	} else {
 		pIVar2 = param_1->lastBuilder;
 		intObjBuilder->nextBuilder = pIVar2;
-		pIVar2->unkBuilder_ = intObjBuilder;
+		pIVar2->unkBuilder = intObjBuilder;
 		param_1->lastBuilder = intObjBuilder;
 	}
 	iVar1 = param_1->builderAmount;
-	iVar3 = param_1->builderAmount2_;
-	intObjBuilder->unkBuilder_ = (InternalObjectBuilder_ *)0x0;
+	iVar3 = param_1->builderAmount2;
+	intObjBuilder->unkBuilder = (InternalObjectBuilder *)0x0;
 	param_1->builderAmount = iVar1 + 0x1;
-	param_1->builderAmount2_ = iVar3 + 0x1;
+	param_1->builderAmount2 = iVar3 + 0x1;
 	return;
 }
-
+/*
 
 
 void FUN_002b5ae0(ulong param_1, ulong param_2)
@@ -35268,131 +35267,19 @@ int StringDifference(char *param_1, char *param_2)
 // WARNING: Removing unreachable block (ram,0x002c757c)
 // WARNING: Removing unreachable block (ram,0x002c75f4)
 // WARNING: Removing unreachable block (ram,0x002c75fc)
-
-char * CopyString(char *param_1, char *param_2)
-
-{
-	undefined4 uVar1;
-	undefined4 uVar2;
-	undefined in_v1_qw[0x10];
-	undefined auVar3[0x10];
-	undefined4 *puVar4;
-	undefined4 *puVar5;
-	long lVar6;
-	char cVar7;
-	char cVar8;
-	char cVar9;
-	char cVar10;
-	char cVar11;
-	char cVar12;
-	char cVar13;
-	char cVar14;
-	undefined uVar15;
-	undefined uVar16;
-	undefined uVar17;
-	undefined uVar18;
-	undefined uVar19;
-	undefined uVar20;
-	undefined uVar21;
-	undefined uVar22;
-
-	lVar6 = (long)(int)param_1;
-	auVar3 = CONCAT88(SUB168(in_v1_qw >> 0x40, 0x0), lVar6);
-	if (((uint)param_2 | (uint)param_1) == 0x0) {
-		uVar1 = *(undefined4 *)param_2;
-		cVar7 = (char)uVar1;
-		cVar8 = (char)((uint)uVar1 >> 0x8);
-		cVar9 = (char)((uint)uVar1 >> 0x10);
-		cVar10 = (char)((uint)uVar1 >> 0x18);
-		uVar2 = *(undefined4 *)(param_2 + 0x4);
-		cVar11 = (char)uVar2;
-		cVar12 = (char)((uint)uVar2 >> 0x8);
-		cVar13 = (char)((uint)uVar2 >> 0x10);
-		cVar14 = (char)((uint)uVar2 >> 0x18);
-		uVar2 = *(undefined4 *)(param_2 + 0x8);
-		uVar15 = (undefined)uVar2;
-		uVar16 = (undefined)((uint)uVar2 >> 0x8);
-		uVar17 = (undefined)((uint)uVar2 >> 0x10);
-		uVar18 = (undefined)((uint)uVar2 >> 0x18);
-		uVar2 = *(undefined4 *)(param_2 + 0xc);
-		uVar19 = (undefined)uVar2;
-		uVar20 = (undefined)((uint)uVar2 >> 0x8);
-		uVar21 = (undefined)((uint)uVar2 >> 0x10);
-		uVar22 = (undefined)((uint)uVar2 >> 0x18);
-		auVar3 = ~CONCAT115(uVar22, CONCAT114(uVar21, CONCAT113(uVar20, CONCAT112(uVar19, CONCAT111(uVar18,
-			CONCAT110(uVar17, CONCAT19(uVar16, CONCAT18(uVar15,
-				CONCAT17(cVar14, CONCAT16(cVar13, CONCAT15(cVar12,
-					CONCAT14(cVar11, uVar1))))))))))));
-		puVar4 = (undefined4 *)param_2;
-		if ((SUB168(auVar3, 0x0) &
-			CONCAT17(cVar14 + -0x1,
-				CONCAT16(cVar13 + -0x1,
-					CONCAT15(cVar12 + -0x1,
-						CONCAT14(cVar11 + -0x1,
-							CONCAT13(cVar10 + -0x1,
-								CONCAT12(cVar9 + -0x1,
-									CONCAT11(cVar8 + -0x1, cVar7 + -0x1)))
-						)))) & 0x8080808080808080) == 0x0) {
-			do {
-				puVar5 = (undefined4 *)lVar6;
-				*puVar5 = CONCAT13(cVar10, CONCAT12(cVar9, CONCAT11(cVar8, cVar7)));
-				puVar5[0x1] = CONCAT13(cVar14, CONCAT12(cVar13, CONCAT11(cVar12, cVar11)));
-				puVar5[0x2] = CONCAT13(uVar18, CONCAT12(uVar17, CONCAT11(uVar16, uVar15)));
-				puVar5[0x3] = CONCAT13(uVar22, CONCAT12(uVar21, CONCAT11(uVar20, uVar19)));
-				param_2 = (char *)(puVar4 + 0x4);
-				uVar1 = *(undefined4 *)param_2;
-				cVar7 = (char)uVar1;
-				cVar8 = (char)((uint)uVar1 >> 0x8);
-				cVar9 = (char)((uint)uVar1 >> 0x10);
-				cVar10 = (char)((uint)uVar1 >> 0x18);
-				uVar2 = puVar4[0x5];
-				cVar11 = (char)uVar2;
-				cVar12 = (char)((uint)uVar2 >> 0x8);
-				cVar13 = (char)((uint)uVar2 >> 0x10);
-				cVar14 = (char)((uint)uVar2 >> 0x18);
-				uVar2 = puVar4[0x6];
-				uVar15 = (undefined)uVar2;
-				uVar16 = (undefined)((uint)uVar2 >> 0x8);
-				uVar17 = (undefined)((uint)uVar2 >> 0x10);
-				uVar18 = (undefined)((uint)uVar2 >> 0x18);
-				uVar2 = puVar4[0x7];
-				uVar19 = (undefined)uVar2;
-				uVar20 = (undefined)((uint)uVar2 >> 0x8);
-				uVar21 = (undefined)((uint)uVar2 >> 0x10);
-				uVar22 = (undefined)((uint)uVar2 >> 0x18);
-				auVar3 = ~CONCAT115(uVar22, CONCAT114(uVar21, CONCAT113(uVar20, CONCAT112(uVar19, CONCAT111(
-					uVar18, CONCAT110(uVar17, CONCAT19(uVar16, CONCAT18(
-						uVar15, CONCAT17(cVar14, CONCAT16(cVar13, CONCAT15(
-							cVar12, CONCAT14(cVar11, uVar1))))))))))));
-				lVar6 = (long)(int)(puVar5 + 0x4);
-				puVar4 = (undefined4 *)param_2;
-			} while ((SUB168(auVar3, 0x0) &
-				CONCAT17(cVar14 + -0x1,
-					CONCAT16(cVar13 + -0x1,
-						CONCAT15(cVar12 + -0x1,
-							CONCAT14(cVar11 + -0x1,
-								CONCAT13(cVar10 + -0x1,
-									CONCAT12(cVar9 + -0x1,
-										CONCAT11(cVar8 + -0x1,
-											cVar7 + -0x1))))))) &
-				0x8080808080808080) == 0x0);
-			auVar3 = CONCAT88(SUB168(auVar3 >> 0x40, 0x0), lVar6);
-		}
-		else {
-			auVar3 = CONCAT88(SUB168(auVar3 >> 0x40, 0x0), lVar6);
-		}
+*/
+char * CopyString(char *param_1, char *param_2) {
+	char *start = param_1;
+	while (*param_2) {
+		*param_1 = *param_2;
+		++param_1;
+		++param_2;
 	}
-	do {
-		cVar7 = *param_2;
-		param_2 = (char *)((int)param_2 + 0x1);
-		*SUB164(auVar3, 0x0) = cVar7;
-		auVar3 = CONCAT88(SUB168(auVar3 >> 0x40, 0x0), (long)(int)(SUB164(auVar3, 0x0) + 0x1));
-	} while (cVar7 != '\0');
-	return param_1;
+	return start;
 }
 
 // An absolutely GalaxyBrain way to use 128-bit PS2 operations to find string length
-*/
+
 uint GetStringLength(char *str) {
 	char *pcVar2 = str;
 	while (*pcVar2 != '\0') {
@@ -36748,7 +36635,7 @@ switchD_002c8638_caseD_9:
 
 
 // Return 0 if strings are equal, non zero otherwise, case independant
-
+*/
 byte CompareStrings(char *word1, char *word2, int strLen)
 
 {
@@ -36774,7 +36661,7 @@ byte CompareStrings(char *word1, char *word2, int strLen)
 	return bVar3;
 }
 
-
+/*
 
 undefined4 FUN_002c95a8(int param_1, long param_2)
 
@@ -39801,21 +39688,22 @@ undefined4 FUN_002ccd30(int *param_1, ulong param_2)
 	return 0x0;
 }
 
+*/
 
-
-char ToLowerCase(char param_1)
-
-{
+char ToLowerCase(char param_1) {
 	char cVar1;
 
 	cVar1 = param_1 + ' ';
-	if ((CasingTable[param_1] & 0x1U) == 0x0) {
+	if (param_1 < 'a') {
+		cVar1 = param_1 + ('a' - 'A');
+	}
+	else {
 		cVar1 = param_1;
 	}
 	return cVar1;
 }
 
-
+/*
 
 undefined ** FUN_002cced0(void)
 

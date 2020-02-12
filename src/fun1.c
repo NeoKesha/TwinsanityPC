@@ -45,11 +45,11 @@ void FUN_00100100(GameArchivesReader *archivesReader_) {
 	return;
 }
 
-
+*/
 
 GameArchivesReader * FUN_00100228(GameArchivesReader *param_1) {
-	undefined4 *puVar1;
-	undefined4 *puVar2;
+	uint *puVar1;
+	uint *puVar2;
 	PublicObjectBuilder *objBuilderPtr_;
 	int iVar3;
 
@@ -61,7 +61,7 @@ GameArchivesReader * FUN_00100228(GameArchivesReader *param_1) {
 	param_1->field_0x30 = 0x0;
 	param_1->field_0x34 = 0xa;
 	param_1->field_0x38 = 0xa;
-	puVar1 = (undefined4 *)MemoryAllocate2(0x88);
+	puVar1 = (uint *)MemoryAllocate2(0x88);
 	*puVar1 = 0xa;
 	iVar3 = 0x9;
 	puVar2 = puVar1 + 0x4;
@@ -113,14 +113,16 @@ GameArchivesReader * FUN_00100228(GameArchivesReader *param_1) {
 	FUN_002b5a08(objBuilderPtr_, (undefined *)&param_1->unkBuilderTable9);
 	FUN_002b5a08(objBuilderPtr_, (undefined *)&param_1->unkBuilderTable10);
 	InitSomeUnkownGlobals();
-	BYTE_0030a0f8 = 0x0;
-	FUN_0010c160();
-	FUN_001ba1d0();
+
+	*(byte*)DAT(0x0030a0f8) = 0x0;
+	//TODO:
+	//FUN_0010c160();
+	//FUN_001ba1d0();
 	param_1->unkBitfield = param_1->unkBitfield | 0x8;
 	return param_1;
 }
 
-
+/*
 
 void FUN_001004c8(void)
 
@@ -739,21 +741,21 @@ LAB_0010136c:
 	return param_1;
 }
 
-
+*/
 
 PublicObjectBuilder * FUN_00101408(PublicObjectBuilder *param_1)
 
 {
 	PublicObjectBuilder *local_a0_lo;
 
-	param_1->lastBuilder = (InternalObjectBuilder_ *)0x0;
-	param_1->firstBuilder = (InternalObjectBuilder_ *)0x0;
+	param_1->lastBuilder = (InternalObjectBuilder *)0x0;
+	param_1->firstBuilder = (InternalObjectBuilder *)0x0;
 	param_1->builderAmount = 0x0;
-	param_1->builderAmount2_ = 0x0;
+	param_1->builderAmount2 = 0x0;
 	return param_1;
 }
 
-
+/*
 
 void FUN_00101458(ulong param_1, ulong param_2)
 
@@ -829,7 +831,7 @@ GameArchivesReader * InitArchivesReader_(uint wordNum, ArchivesData *words)
 	char **wordsArray;
 	uint counter;
 	String string;
-	/*
+	
 	counter = 0x1;
 	archivesReader_ = (GameArchivesReader *)MemoryAllocate(0xfc);
 	archivesReader_ = FUN_00100228(archivesReader_);
@@ -854,7 +856,6 @@ GameArchivesReader * InitArchivesReader_(uint wordNum, ArchivesData *words)
 			wordsArray = wordsArray + 0x1;
 		} while (counter < wordNum);
 	}
-	*/
 	printf("[INFO]Mocked GameArchivesReader * InitArchivesReader_(uint wordNum, ArchivesData *words)\n");
 	return archivesReader_;
 }
@@ -4529,11 +4530,9 @@ ulong FUN_0010b880(int *param_1)
 	return uVar12;
 }
 
+*/
 
-
-int FUN_0010c160(void)
-
-{
+int FUN_0010c160(void) {
 	bool bVar1;
 	int iVar2;
 	Vector4 local_60[0x5];
@@ -4568,7 +4567,7 @@ int FUN_0010c160(void)
 	return iVar2;
 }
 
-
+/*
 
 void FUN_0010c240(void)
 
@@ -15365,16 +15364,17 @@ void FUN_0011bdb8(long param_1, long param_2)
 	return;
 }
 
-
+*/
 
 void FUN_0011be80(undefined4 *param_1, int param_2)
 
 {
-	*param_1 = INT_ARRAY_002e7360[param_2];
+	//CHANGE *param_1 = INT_ARRAY_002e7360[param_2];
+	*param_1 = *((uint*)DAT(0x002e7360) + param_2);
 	return;
 }
 
-
+/*
 
 void FUN_0011bea0(float param_1, float param_2, float param_3, undefined *param_4)
 
@@ -15574,16 +15574,14 @@ short * MoveShortFromS2toS1(short *s1, short *s2)
 	return s1;
 }
 
+*/
 
-
-void SetUndefinedID_(short *param_1)
-
-{
+void SetUndefinedID_(short *param_1) {
 	*param_1 = -0x1;
 	return;
 }
 
-
+/*
 
 Vector4 * FUN_0011c1e8(Vector4 *param_1)
 
@@ -38210,7 +38208,7 @@ undefined8 FUN_0013f1b8(astruct_15 *this_, int param_2, ulong *param_3, int para
 	return uVar2;
 }
 
-
+*/
 
 astruct_15 * FUN_0013f218(astruct_15 *param_1, GameResources *resources)
 
@@ -38220,7 +38218,7 @@ astruct_15 * FUN_0013f218(astruct_15 *param_1, GameResources *resources)
 	return param_1;
 }
 
-
+/*
 
 void FUN_0013f250(astruct_15 *this_, ulong param_2)
 

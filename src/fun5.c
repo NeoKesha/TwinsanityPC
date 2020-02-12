@@ -19757,11 +19757,9 @@ int FUN_002625a0(astruct_15 *this_, GeneralChunkStruct *generalLevelStructPtr,
 	return 0x0;
 }
 
+*/
 
-
-astruct_15 * FUN_00262648(astruct_15 *param_1, GameResources *resources)
-
-{
+astruct_15 * FUN_00262648(astruct_15 *param_1, GameResources *resources) {
 	String **ppSVar1;
 
 	param_1->field_0x0 = 0x0;
@@ -19779,7 +19777,7 @@ astruct_15 * FUN_00262648(astruct_15 *param_1, GameResources *resources)
 	return param_1;
 }
 
-
+/*
 
 void FUN_002626c8(astruct_15 *this_, ulong param_2)
 
@@ -19875,7 +19873,7 @@ void FUN_00262818(int param_1)
 	return;
 }
 
-
+*/
 
 void FUN_00262830(astruct_15 *param_1)
 
@@ -19884,7 +19882,7 @@ void FUN_00262830(astruct_15 *param_1)
 	return;
 }
 
-
+/*
 
 void FUN_00262840(int param_1)
 
@@ -21521,7 +21519,7 @@ ChunkItem * FUN_00264a30(ChunkItem *chunkItem, char *param_2)
 	return chunkItem;
 }
 
-
+*/
 
 GameResources * InitResources(GameResources *resources, uint languagesAmt, char *levelAgentsStr)
 
@@ -21529,15 +21527,15 @@ GameResources * InitResources(GameResources *resources, uint languagesAmt, char 
 	resources->methods = DAT(0x00304230);
 	resources->languagesAmt = languagesAmt;
 	resources->LevelAgentsAxpString = levelAgentsStr;
-	DAT_003b0670 = DAT(0x003b9f20);
-	DAT_003b0648 = DAT(0x003bab20);
-	DAT_003b0570 = DAT(0x003bb720);
-	DAT_003b0698 = DAT(0x003bc320);
-	DAT_003b06c0 = DAT(0x003bcf20);
-	DAT_003b0598 = DAT(0x003b6f20);
-	DAT_003b05d0 = DAT(0x003b7b20);
-	DAT_003b0620 = DAT(0x003b8720);
-	DAT_003b05f8 = DAT(0x003b9320);
+	*(byte*)DAT(0x003b0670) = DAT(0x003b9f20);
+	*(byte*)DAT(0x003b0648) = DAT(0x003bab20);
+	*(byte*)DAT(0x003b0570) = DAT(0x003bb720);
+	*(byte*)DAT(0x003b0698) = DAT(0x003bc320);
+	*(byte*)DAT(0x003b06c0) = DAT(0x003bcf20);
+	*(byte*)DAT(0x003b0598) = DAT(0x003b6f20);
+	*(byte*)DAT(0x003b05d0) = DAT(0x003b7b20);
+	*(byte*)DAT(0x003b0620) = DAT(0x003b8720);
+	*(byte*)DAT(0x003b05f8) = DAT(0x003b9320);
 	resources->objectTable = (ResourceTable *)0x0;
 	resources->scriptTable = (ResourceTable *)0x0;
 	resources->animationTable = (ResourceTable *)0x0;
@@ -21555,7 +21553,7 @@ GameResources * InitResources(GameResources *resources, uint languagesAmt, char 
 	return resources;
 }
 
-
+/*
 
 void FUN_00264c48(GameResources *this_, ulong param_2)
 
@@ -22175,7 +22173,7 @@ void FUN_00265920(GameResources *resources)
 	return;
 }
 
-
+*/
 
 ResourceTable * InitObjectTable(GameResources *resources, uint tableSize)
 
@@ -22488,7 +22486,7 @@ ResourceTable * InitOgiTable(GameResources *param_1, uint tableSize)
 	return param_1->ogiTable;
 }
 
-
+/*
 
 void FUN_00266180(uint *param_1, uint *param_2)
 

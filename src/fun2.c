@@ -29663,7 +29663,7 @@ void FUN_0017a648(int param_1, int *param_2)
 	return;
 }
 
-
+*/
 
 GameResources * InitializeAllGameResources(GameResources *resources)
 
@@ -29681,7 +29681,7 @@ GameResources * InitializeAllGameResources(GameResources *resources)
 	return resources;
 }
 
-
+/*
 
 void FUN_0017a720(GameResources *this_, ulong param_2)
 
@@ -35058,11 +35058,9 @@ void FUN_001815e8(long param_1, long param_2)
 	return;
 }
 
+*/
 
-
-GameArchivesReader * FUN_001816f8(GameArchivesReader *param_1)
-
-{
+GameArchivesReader * FUN_001816f8(GameArchivesReader *param_1) {
 	*(undefined *)&param_1->ptrToUnkPools_of_C00_for_game_resources = 0x0;
 	param_1->field_0x4 = 1.00000000;
 	param_1->methods = DAT(0x002f5af0);
@@ -35117,8 +35115,11 @@ bool GetArchivePath(GameArchivesReader *param_1, char *word, char *BATCH, String
 				character = *batchStrPtr;
 				counter += 0x1;
 				newChar = character + -0x20;
-				if ((CasingTable[character] & 0x2U) == 0x0) {
-					newChar = character;
+				if (character > 'Z') {
+					newChar = character - ('a' - 'A');
+				}
+				else {
+					newChar = character;	 
 				}
 				*batchStrPtr = newChar;
 				if (archivePath->stringLength <= counter) break;
@@ -35129,7 +35130,7 @@ bool GetArchivePath(GameArchivesReader *param_1, char *word, char *BATCH, String
 	return bVar1;
 }
 
-
+/*
 
 void FUN_00181880(GameArchivesReader *GameArchivesReader)
 
@@ -35374,55 +35375,31 @@ ulong FUN_00181c70(void)
 }
 
 
-
-void * MemoryAllocate(uint memoryAllocSize)
-
-{
-	HeapManager *heapManager;
-	void *availableAddress;
-
-	heapManager = GetHeapManager();
-	availableAddress = GetMemoryAddress(heapManager, memoryAllocSize);
-	return availableAddress;
+*/
+void * MemoryAllocate(uint memoryAllocSize) {
+	return malloc((size_t)memoryAllocSize);
 }
 
 
 
-void MemoryDeallocate2_(void *address)
-
-{
-	HeapManager *heapManager;
-
-	heapManager = GetHeapManager();
-	FreeMemory(heapManager, address);
+void MemoryDeallocate2_(void *address) {
+	free(address);
 	return;
 }
 
 
 
-void * MemoryAllocate2(ulong memoryAllocSize)
-
-{
-	HeapManager *heapManager;
-	void *availableAddress;
-
-	heapManager = GetHeapManager();
-	availableAddress = GetMemoryAddress(heapManager, (uint)memoryAllocSize);
-	return availableAddress;
+void * MemoryAllocate2(ulong memoryAllocSize) {
+	return malloc((size_t)memoryAllocSize);
 }
 
 
 
-void MemoryDeallocate_(void *address)
-
-{
-	HeapManager *heapManager;
-
-	heapManager = GetHeapManager();
-	FreeMemory(heapManager, address);
+void MemoryDeallocate_(void *address) {
+	free(address);
 	return;
 }
-
+/*
 
 
 HeapManager * GetHeapManager(void)
@@ -40559,15 +40536,13 @@ int FUN_0018be70(float param_1, int **param_2, int param_3)
 	return iVar1;
 }
 
+*/
 
-
-void FUN_0018bec0(void)
-
-{
+void FUN_0018bec0(void) {
 	return;
 }
 
-
+/*
 
 undefined8 FUN_0018bec8(float param_1, undefined8 param_2)
 

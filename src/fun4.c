@@ -8079,7 +8079,7 @@ undefined4 FUN_001fb740(ushort *param_1)
 	return 0x1;
 }
 
-
+*/
 
 void FUN_001fb988(Vector4 *fArray, Vector4 *param_2, Vector4 *param_3)
 
@@ -8092,7 +8092,7 @@ void FUN_001fb988(Vector4 *fArray, Vector4 *param_2, Vector4 *param_3)
 	float fVar6;
 	float fVar7;
 	float fVar8;
-
+	/*
 	iVar2 = iRam0030a044;
 	_cVar3 = 0x0;
 	if (0x0 < iRam0030a044) {
@@ -8174,6 +8174,8 @@ LAB_001fbb0c:
 	(char)iRam0030a044 += -0x1;
 LAB_001fbbc4:
 	FUN_002007d0(cVar3, cVar4, (char)iRam0030a044);
+	*/
+	printf("[INFO] Mocked FUN_001fb988");
 	return;
 }
 
@@ -8191,7 +8193,7 @@ void FUN_001fbbe0(Vector4 *param_1, Vector4 *param_2, Vector4 *param_3, Vector4 
 	float fVar7;
 	float fVar8;
 	float fVar9;
-
+	/*
 	iVar2 = iRam0030a044;
 	_cVar3 = 0x0;
 	if (0x0 < iRam0030a044) {
@@ -8299,10 +8301,12 @@ LAB_001fbe24:
 	(char)iRam0030a044 += -0x1;
 LAB_001fbedc:
 	FUN_00200808(cVar3, cVar4, cVar5, (char)iRam0030a044);
+	*/
+	printf("[INFO] Mocked FUN_001fbbe0");
 	return;
 }
 
-
+/*
 
 void FUN_001fbef8(undefined2 *param_1, int **param_2, int **param_3)
 
@@ -8572,11 +8576,9 @@ LAB_001fc450:
 	return iVar3;
 }
 
+*/
 
-
-int FUN_001fc4d0(ushort *param_1, Vector4 *vecArray)
-
-{
+int FUN_001fc4d0(ushort *param_1, Vector4 *vecArray) {
 	undefined8 uVar1;
 	int index;
 	Vector4 *pVVar2;
@@ -8593,41 +8595,42 @@ int FUN_001fc4d0(ushort *param_1, Vector4 *vecArray)
 
 	local_s2_lo_44 = vecArray + 0x4;
 	local_s4_lo_52 = vecArray + 0x1;
-	uRam0030a058 = 0x1;
+	*(uint*)DAT(0x030a058) = 0x1;
 	local_s5_lo_60 = vecArray + 0x2;
 	local_s3_lo_68 = vecArray + 0x3;
-	iRam0030a044 = 0x0;
-	INT_ARRAY_0030a048[3] = 0x0;
-	INT_ARRAY_0030a048[0] = 0x0;
-	INT_ARRAY_0030a048[1] = 0x0;
-	INT_ARRAY_0030a048[2] = 0x0;
+	*(uint*)DAT(0x0030a044) = 0x0;
+	*((uint*)DAT(0x0030a048) + 3) = 0x0;
+	*((uint*)DAT(0x0030a048) + 0) = 0x0;
+	*((uint*)DAT(0x0030a048) + 1) = 0x0;
+	*((uint*)DAT(0x0030a048) + 2) = 0x0;
 	index = 0x0;
 	do {
 		counter = index + 0x1;
 		local_a2_lo_112 = vecArray + index;
 		counter2 = 0x0;
-		index = iRam0030a044;
-		if (0x0 < iRam0030a044) {
-			pVVar2 = Vector4_ARRAY_003b49e0;
+		index = *(uint*)DAT(0x0030a044);
+		if (0x0 < *(uint*)DAT(0x0030a044)) {
+			pVVar2 = *(Vector4**)DAT(0x003b49e0);
 			do {
 				fVar4 = pVVar2->x - local_a2_lo_112->x;
 				fVar5 = pVVar2->y - local_a2_lo_112->y;
 				fVar3 = pVVar2->z - local_a2_lo_112->z;
 				// Calculate vector length to see if its length is less than 0.0001
-				if (SQRT(fVar4 * fVar4 + fVar5 * fVar5 + fVar3 * fVar3) < 0.00010000) goto LAB_001fc5e4;
+				if (sqrt(fVar4 * fVar4 + fVar5 * fVar5 + fVar3 * fVar3) < 0.00010000) goto LAB_001fc5e4;
 				counter2 += 0x1;
 				pVVar2 = pVVar2 + 0x1;
 				index = counter;
-			} while (counter2 < iRam0030a044);
+			} while (counter2 < *(uint*)DAT(0x0030a044));
 		}
-		iRam0030a044 = index + 0x1;
+		*(uint*)DAT(0x0030a044) = index + 0x1;
 		uVar1 = *(undefined8 *)local_a2_lo_112;
 		fVar3 = local_a2_lo_112->z;
 		fVar4 = local_a2_lo_112->w;
-		Vector4_ARRAY_003b49e0[index].x = (float)uVar1;
-		Vector4_ARRAY_003b49e0[index].y = (float)((ulong)uVar1 >> 0x20);
-		Vector4_ARRAY_003b49e0[index].z = fVar3;
-		Vector4_ARRAY_003b49e0[index].w = fVar4;
+		
+		(*((Vector4*)DAT(0x003b49e0) + index)).x = (float)uVar1;
+		(*((Vector4*)DAT(0x003b49e0) + index)).y = (float)((ulong)uVar1 >> 0x20);
+		(*((Vector4*)DAT(0x003b49e0) + index)).z = fVar3;
+		(*((Vector4*)DAT(0x003b49e0) + index)).w = fVar4;
 	LAB_001fc5e4:
 		index = counter;
 		if (0x4 < counter) {
@@ -8636,18 +8639,20 @@ int FUN_001fc4d0(ushort *param_1, Vector4 *vecArray)
 			FUN_001fb988(vecArray, local_s2_lo_44, local_s3_lo_68);
 			FUN_001fb988(vecArray, local_s3_lo_68, local_s5_lo_60);
 			FUN_001fbbe0(local_s4_lo_52, local_s5_lo_60, local_s3_lo_68, local_s2_lo_44);
-			uRam0030a058 = 0x0;
-			index = FUN_001faf60();
+			*(uint*)DAT(0x0030a058) = 0x0;
+			//TODO
+			//index = FUN_001faf60();
+			/*
 			if (((index != 0x0) && (index = FUN_001fb0c8(), index != 0x0)) &&
 				(index = FUN_001fb380(), index != 0x0)) {
 				index = FUN_001fb740(param_1);
-			}
+			}*/
 			return index;
 		}
 	} while (true);
 }
 
-
+/*
 
 undefined4 FUN_001fc6a8(ushort *param_1, float *param_2, float *param_3, int param_4, long param_5)
 
@@ -13720,7 +13725,7 @@ bool NewString(String *str, int length)
 	return memoryRelocated;
 }
 
-
+*/
 
 void StringDelete(String *param_1)
 
@@ -13736,7 +13741,7 @@ void StringDelete(String *param_1)
 	return;
 }
 
-
+/*
 
 void FUN_00204378(undefined8 param_1, int param_2, long param_3)
 
@@ -13880,15 +13885,13 @@ undefined4 FUN_00204658(undefined8 param_1, long param_2, undefined8 param_3)
 	return uVar3;
 }
 
+*/
 
-
-String * CreateStringFromChar(String *newStr, char *string)
-
-{
+String * CreateStringFromChar(String *newStr, char *string) {
 	char *str;
 	bool bVar1;
 	uint strLen;
-	uint memoryAllocSize;
+	ulong memoryAllocSize;
 	char *strMem;
 
 	str = newStr->string;
@@ -13898,12 +13901,11 @@ String * CreateStringFromChar(String *newStr, char *string)
 			strLen = GetStringLength(string);
 		}
 		memoryAllocSize = strLen + 0x20 & 0xffffffe0;
-		_memoryAllocSize = SEXT48((int)memoryAllocSize);
-		bVar1 = (long)newStr->stringMemoryOccupied < (long)_memoryAllocSize;
+		bVar1 = (long)newStr->stringMemoryOccupied < (long)memoryAllocSize;
 		newStr->stringLength = strLen;
 		if (bVar1) {
 			newStr->stringMemoryOccupied = memoryAllocSize;
-			strMem = (char *)MemoryAllocate2(_memoryAllocSize);
+			strMem = (char *)MemoryAllocate2(memoryAllocSize);
 			newStr->string = strMem;
 		}
 		if (string == (char *)0x0) {
@@ -13912,17 +13914,15 @@ String * CreateStringFromChar(String *newStr, char *string)
 		else {
 			CopyString(newStr->string, string);
 		}
-		if ((bVar1) &&
-			(str != (char *)0x0
-				// If string was previously created deallocate it after copy)) {
-				MemoryDeallocate_(str);
-		newStr->stringMemoryOccupied = 0x0;
+		if ((bVar1) && (str != (char *)0x0)) {
+			MemoryDeallocate_(str);
+			newStr->stringMemoryOccupied = 0x0;
+		}
 	}
-}
-return newStr;
+	return newStr;
 }
 
-
+/*
 
 String * ConcatenateString(String *strObj, char *str)
 
@@ -15900,36 +15900,34 @@ FUN_00206f00(RecursiveAddonToScript *recAddon, UnkScriptRelatedStruct2 *unkScrip
 }
 
 
-
-void InitSomeUnkownGlobals(void)
-
-{
-	DAT_003d9a00 = 0x2;
-	DAT_003d9a04 = 0x2;
-	DAT_003d9a08 = 0x0;
-	DAT_003d9a0c = 0x1;
-	DAT_003d9a10 = 0x0;
-	DAT_003d9a14 = 0x0;
-	DAT_003d9a18 = 0x0;
-	DAT_003d9a1c = 0x1;
-	DAT_003d9a20 = 0x1;
-	DAT_003d9a24 = 0x1;
-	DAT_003d9a28 = 0x0;
-	DAT_003d9a2c = 0x0;
-	DAT_003d9a30 = 0x0;
-	DAT_003d9a34 = 0x0;
-	DAT_003d9a38 = 0x0;
-	DAT_003d9a3c = 0x0;
-	DAT_003d9a40 = 0x0;
-	DAT_003d9a44 = 0x0;
-	DAT_003d9a48 = 0x0;
-	DAT_003d9a4c = 0x0;
-	DAT_003d9a50 = 0x0;
-	DAT_003d9a54 = 0x4;
-	DAT_003d9a58 = 0x2;
+*/
+void InitSomeUnkownGlobals(void) {
+	*(uint*)DAT(0x003d9a00) = 0x2;
+	*(uint*)DAT(0x003d9a04) = 0x2;
+	*(uint*)DAT(0x003d9a08) = 0x0;
+	*(uint*)DAT(0x003d9a0c) = 0x1;
+	*(uint*)DAT(0x003d9a10) = 0x0;
+	*(uint*)DAT(0x003d9a14) = 0x0;
+	*(uint*)DAT(0x003d9a18) = 0x0;
+	*(uint*)DAT(0x003d9a1c) = 0x1;
+	*(uint*)DAT(0x003d9a20) = 0x1;
+	*(uint*)DAT(0x003d9a24) = 0x1;
+	*(uint*)DAT(0x003d9a28) = 0x0;
+	*(uint*)DAT(0x003d9a2c) = 0x0;
+	*(uint*)DAT(0x003d9a30) = 0x0;
+	*(uint*)DAT(0x003d9a34) = 0x0;
+	*(uint*)DAT(0x003d9a38) = 0x0;
+	*(uint*)DAT(0x003d9a3c) = 0x0;
+	*(uint*)DAT(0x003d9a40) = 0x0;
+	*(uint*)DAT(0x003d9a44) = 0x0;
+	*(uint*)DAT(0x003d9a48) = 0x0;
+	*(uint*)DAT(0x003d9a4c) = 0x0;
+	*(uint*)DAT(0x003d9a50) = 0x0;
+	*(uint*)DAT(0x003d9a54) = 0x4;
+	*(uint*)DAT(0x003d9a58) = 0x2;
 	return;
 }
-
+/*
 
 
 undefined4 FUN_002071f0(byte *param_1, int param_2, int *param_3)
